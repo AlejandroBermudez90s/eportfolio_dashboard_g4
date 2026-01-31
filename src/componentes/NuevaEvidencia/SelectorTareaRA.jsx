@@ -26,7 +26,7 @@ const SelectorTareaRA = (props) => {
 
     return (
         <div className="centro">
-            <h2>Selector Tarea</h2>
+            <h4>Selector Tarea</h4>
             <Box sx={{ minWidth: 400 }}>
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Tarea</InputLabel>

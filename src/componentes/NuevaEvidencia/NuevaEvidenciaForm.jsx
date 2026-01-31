@@ -18,7 +18,7 @@ const NuevaEvidenciaForm = (props) => {
 
 	return (
 		<div className='ancho'>
-			<h2>Formulario Tarea</h2>
+			<h4>Formulario Tarea</h4>
 			<p>Tarea seleccionada: {props.tareaSeleccionada.id} - {props.tareaSeleccionada.observaciones}</p>
 			<TextField 
 				id="outlined-basic" 

@@ -28,6 +28,7 @@ const NuevaEvidencia = () => {
 
     return (
         <div className="centro">
+            <h2>Nueva Evidencia</h2>
             <p>Tarea Seleccionada: {tareaSeleccionada.id} - {tareaSeleccionada.observaciones}</p>
             <SelectorTareaRA listaTareas={listaTareas}
                              setListaTareas={setListaTareas}
