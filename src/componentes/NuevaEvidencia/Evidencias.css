@@ -5,3 +5,7 @@
 .negrita {
     font-weight: 900;
 }
+
+.ancho {
+    min-width: 400px !important;
+}
