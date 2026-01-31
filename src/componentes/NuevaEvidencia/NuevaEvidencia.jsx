@@ -1,17 +1,22 @@
+import "./Evidencias.css"
 import SelectorTareaRA from "./SelectorTareaRA"
 import NuevaEvidenciaForm from "./NuevaEvidenciaForm"
 import { useState } from "react"
 
 const NuevaEvidencia = () => {
 
+    function verTareas(tarea) {
+        return <li key={tarea.id}>{tarea.observaciones}</li>
+    }
+
     const [listaTareas, setListaTareas] = useState([])
 
     return (
-        <>
-            <p>Tarea Seleccionada:</p>
-            <SelectorTareaRA listaTareas={listaTareas} setListaTareas={setListaTareas}></SelectorTareaRA>
+        <div className="centro">
+            <p>Tarea Seleccionada: {listaTareas.map(verTareas)}</p>
+            <SelectorTareaRA listaTareas={listaTareas} setListaTareas={setListaTareas} verTareas={verTareas}></SelectorTareaRA>
             <NuevaEvidenciaForm></NuevaEvidenciaForm>
-        </>
+        </div>
     )
 }
 

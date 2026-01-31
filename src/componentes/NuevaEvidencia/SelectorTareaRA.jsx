@@ -1,10 +1,9 @@
 import tareasRA from "../../mocks/mock-tareasRA"
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import "./Evidencias.css"
 
 const SelectorTareaRA = (props) => {
-
-    function verTareas(tarea) {
-        return <li key={tarea.id}>{tarea.observaciones}</li>
-    }
 
     function mostrarTareas() {
         return <ul>{props.setListaTareas(tareasRA.lista)}</ul>
@@ -15,14 +14,16 @@ const SelectorTareaRA = (props) => {
     }
 
     return (
-        <>
-            <h1>Selector Tarea</h1>
+        <div className="centro">
+            <h2>Selector Tarea</h2>
             <p>Todas las tareas:</p>
-            {props.listaTareas.map(verTareas)}
+            {props.listaTareas.map(props.verTareas)}
 
-            <button onClick={mostrarTareas}>Mostrar tareas</button>
-            <button onClick={borrarTareas}>Borrar tareas</button>
-        </>
+            <Stack direction="row" spacing={2}>
+                <Button variant="contained" onClick={mostrarTareas}>Mostrar tareas</Button>
+                <Button variant="contained" onClick={borrarTareas}>Borrar tareas</Button>
+            </Stack>
+        </div>
     )
 }
 
