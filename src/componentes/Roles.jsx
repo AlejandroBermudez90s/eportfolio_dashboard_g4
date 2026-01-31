@@ -1,9 +1,15 @@
-function Roles(props) {
+import { useContext } from "react";
+import TokenContext from "./TokenContext";
+
+function Roles() {
+    
+    const token = useContext(TokenContext)
+
     return(
         <aside>
             <h2>ROLES</h2>
-            <p>Token: {props.token}</p>
+            <p>Token: {token}</p>
         </aside>
     )
 }
-export default Roles;
+export default Roles
