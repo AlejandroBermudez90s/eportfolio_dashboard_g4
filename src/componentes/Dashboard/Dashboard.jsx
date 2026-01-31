@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import UserContext from "./UserContext";
+import UserContext from "../Contexts/UserContext";
 
 function Dashboard(props) {
 
     const usuario = useContext(UserContext)
 
-    return(
+    return (
         <main>
             <h2>MAIN</h2>
             <p>Menú: {props.menu}</p>

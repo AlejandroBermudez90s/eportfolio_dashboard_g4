@@ -1,10 +1,8 @@
 import './App.css'
-import Cabecera from './componentes/Cabecera.jsx'
-import Roles from './componentes/Roles.jsx'
-import Dashboard from './componentes/Dashboard.jsx'
-import TokenContext from './componentes/TokenContext.jsx'
-import { useState } from 'react'
-import UserContext from './componentes/UserContext.jsx'
+import Cabecera from './componentes/Cabecera/Cabecera.jsx'
+import TokenContext from './componentes/Contexts/TokenContext.jsx'
+import UserContext from './componentes/Contexts/UserContext.jsx'
+import Layout from './componentes/Layout/Layout.jsx'
 
 function App() {
 
@@ -14,28 +12,13 @@ function App() {
 
   return (
     <TokenContext.Provider value={token}>
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-12'>
-            <Cabecera usuario={usuario}></Cabecera>
-          </div>
-        </div>
-
+        <Cabecera usuario={usuario}></Cabecera>
         <UserContext.Provider value={usuario}>
-        <div className='row'>
-          <div className='col-4'>
-            <Roles></Roles>
-          </div>
-          <div className='col-8'>
-            <Dashboard menu={menu}></Dashboard>
-          </div>
-        </div>
+            <Layout menu={menu}></Layout>
         </UserContext.Provider>
-
-      </div>
     </TokenContext.Provider>
   )
 
 }
 
-export default App;
+export default App
