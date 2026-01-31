@@ -1,28 +1,52 @@
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 import tareasRA from "../../mocks/mock-tareasRA"
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 import "./Evidencias.css"
+import { useState } from 'react';
 
 const SelectorTareaRA = (props) => {
 
-    function mostrarTareas() {
-        return <ul>{props.setListaTareas(tareasRA.lista)}</ul>
+    const [observaciones, setObservaciones] = useState("")
+
+    const handleChange = (event) => {
+        const idTarea = event.target.value
+        props.manejarSelector(idTarea)
+
+        const tarea = props.listaTareas.find(tarea => tarea.id === idTarea)
+        setObservaciones(tarea.observaciones)
     }
 
-    function borrarTareas() {
-        props.setListaTareas([])
+    function mostrarTareas() {
+        return props.setListaTareas(tareasRA.lista)
     }
 
     return (
         <div className="centro">
             <h2>Selector Tarea</h2>
-            <p>Todas las tareas:</p>
-            {props.listaTareas.map(props.verTareas)}
+            <Box sx={{ minWidth: 400 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Tarea</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={props.tareaSeleccionada}
+                        label="Tarea"
+                        onChange={handleChange}
+                    >
+                        {mostrarTareas()}
+                        {props.listaTareas.length === 0 ? <MenuItem value={-1}>No hay tareas</MenuItem>
+                                                        : props.listaTareas.map(props.verTareas)
+                        }
+                        
+                    </Select>
+                </FormControl>
+            </Box>
 
-            <Stack direction="row" spacing={2}>
-                <Button variant="contained" onClick={mostrarTareas}>Mostrar tareas</Button>
-                <Button variant="contained" onClick={borrarTareas}>Borrar tareas</Button>
-            </Stack>
+            <p>Tarea seleccionada: {props.tareaSeleccionada} - {observaciones}</p>
         </div>
     )
 }
