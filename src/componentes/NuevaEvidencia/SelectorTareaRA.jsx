@@ -1,18 +1,27 @@
-import { useState } from "react"
-
+import tareasRA from "../../mocks/mock-tareasRA"
 
 const SelectorTareaRA = (props) => {
 
-    function seleccionarTarea() {
+    function verTareas(tarea) {
+        return <li key={tarea.id}>{tarea.observaciones}</li>
+    }
 
-        props.setTarea("Tarea 1")
+    function mostrarTareas() {
+        return <ul>{props.setListaTareas(tareasRA.lista)}</ul>
+    }
+
+    function borrarTareas() {
+        props.setListaTareas([])
     }
 
     return (
         <>
             <h1>Selector Tarea</h1>
-            <p>Tarea seleccionada: {props.tarea}</p>
-            <button onClick={seleccionarTarea}>Seleccionar tarea</button>
+            <p>Todas las tareas:</p>
+            {props.listaTareas.map(verTareas)}
+
+            <button onClick={mostrarTareas}>Mostrar tareas</button>
+            <button onClick={borrarTareas}>Borrar tareas</button>
         </>
     )
 }

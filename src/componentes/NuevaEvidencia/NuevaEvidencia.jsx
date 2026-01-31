@@ -4,13 +4,13 @@ import { useState } from "react"
 
 const NuevaEvidencia = () => {
 
-    const [tarea, setTarea] = useState("")
+    const [listaTareas, setListaTareas] = useState([])
 
     return (
         <>
-            <p>Tarea Seleccionada: {tarea}</p>
-            <SelectorTareaRA tarea={tarea} setTarea={setTarea}></SelectorTareaRA>
-            <NuevaEvidenciaForm tarea={tarea} setTarea={setTarea}></NuevaEvidenciaForm>
+            <p>Tarea Seleccionada:</p>
+            <SelectorTareaRA listaTareas={listaTareas} setListaTareas={setListaTareas}></SelectorTareaRA>
+            <NuevaEvidenciaForm></NuevaEvidenciaForm>
         </>
     )
 }

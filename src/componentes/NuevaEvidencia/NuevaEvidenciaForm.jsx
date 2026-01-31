@@ -4,14 +4,20 @@ const NuevaEvidenciaForm = (props) => {
 
     function tareaManejar() {
 
-        props.setTarea("Tarea 1")
+        
+    }
+
+    function borrarTarea() {
+
+        
     }
 
     return (
         <>
             <h1>Formulario Tarea</h1>
-            <p>Tarea seleccionada: {props.tarea}</p>
+            <p>Tarea seleccionada: </p>
             <button onClick={tareaManejar}>Seleccionar tarea</button>
+            <button onClick={borrarTarea}>Borrar tarea</button>
         </>
     )
 }
