@@ -24,6 +24,7 @@ const NuevaEvidenciaForm = (props) => {
 				id="outlined-basic" 
 				label="URL" 
 				variant="outlined" 
+				fullWidth
 			/>
 			<br />
 			<br />
@@ -32,6 +33,8 @@ const NuevaEvidenciaForm = (props) => {
 				label="Observaciones"
 				placeholder="Observaciones"
 				multiline
+				fullWidth
+				margin="normal"
 			/>
 			<Stack direction="row" spacing={2}>
 				<Button variant="contained" onClick={añadirEvidencia}>Añadir evidencia</Button>
