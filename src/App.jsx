@@ -1,30 +1,26 @@
-
 import './App.css'
-import Cabecera from './componentes/Cabecera.jsx'
-import Roles from './componentes/Roles.jsx'
-import Dashboard from './componentes/Dashboard.jsx'
+import Cabecera from './componentes/Cabecera/Cabecera.jsx'
+import TokenContext from './componentes/Contexts/TokenContext.jsx'
+import UserContext from './componentes/Contexts/UserContext.jsx'
+import Layout from './componentes/Layout/Layout.jsx'
+
 function App() {
-  const usuario = 'Alejandro'
-  const token = 'abc123xyz456'
-  const menu = 'Principal'
-  return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <div className='col-12'>
-          <Cabecera usuario={usuario}></Cabecera>
-        </div>
-      </div>
-      <div className='row'>
-        <div className='col-4'>
-          <Roles token={token}></Roles>
-        </div>
-        <div className='col-8'>
-          <Dashboard menu={menu}></Dashboard>
-        </div>
-      </div>
-    </div>
-  )
+
+	const usuario = 'Alejandro'
+	const token = 'abc123xyz456'
+	const menu = 'Principal'
+
+	return (
+		<div className='container-fluid vh-100 vw-100 d-flex flex-column p-0'>
+			<TokenContext.Provider value={token}>
+				<Cabecera usuario={usuario}></Cabecera>
+				<UserContext.Provider value={usuario}>
+					<Layout menu={menu}></Layout>
+				</UserContext.Provider>
+			</TokenContext.Provider>
+		</div>
+	)
 
 }
 
-export default App;
+export default App
