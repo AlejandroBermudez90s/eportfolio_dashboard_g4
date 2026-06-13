@@ -6,7 +6,7 @@ import Layout from './componentes/Layout/Layout.jsx'
 
 function App() {
 
-	const usuario = 'Alejandro'
+	const usuario = 'Victor'
 	const token = 'abc123xyz456'
 	const menu = 'Principal'
 
