@@ -1,33 +1,37 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import "./Evidencias.css"
+import { Form, useForm } from 'react-hook-form'
+import { useState, useContext } from 'react';
+import UserContext from '../Contexts/UserContext';
 
 const NuevaEvidenciaForm = (props) => {
 
+	const { control, handleSubmit } = useForm()
+
+	const usuario = useContext(UserContext)
+
+	const [tareaInicial, setTareaInicial] = useState({ 
+																											tarea_id 					: props.tareaSeleccionada.id,
+ 																											estudiante_id 		: usuario,
+																											url								: "",
+																											descripcion				: "",
+ 																											estado_validacion	: "pendiente" 
+																										})
+	
 	function añadirEvidencia() {
 
 		return <></>
 	}
 
-
-	function borrarTareas() {
-		props.setListaTareas([])
-		setTareaSeleccionada("")
-	}
-
 	return (
-		<div className='ancho'>
-			<h4>Formulario Tarea</h4>
-			<p>Tarea seleccionada: {props.tareaSeleccionada.id} - {props.tareaSeleccionada.observaciones}</p>
+		<Form control={control} onSubmit={handleSubmit(añadirEvidencia)}>
 			<TextField 
 				id="outlined-basic" 
 				label="URL" 
 				variant="outlined" 
 				fullWidth
 			/>
-			<br />
-			<br />
 			<TextField
 				id="outlined-textarea"
 				label="Observaciones"
@@ -36,11 +40,10 @@ const NuevaEvidenciaForm = (props) => {
 				fullWidth
 				margin="normal"
 			/>
-			<Stack direction="row" spacing={2}>
-				<Button variant="contained" onClick={añadirEvidencia}>Añadir evidencia</Button>
-				<Button variant="contained" onClick={borrarTareas}>Borrar tareas</Button>
+			<Stack direction="row" spacing={2} style={{marginLeft:550}}>
+				<Button variant="contained" type="submit">Añadir evidencia</Button>
 			</Stack>
-		</div>
+		</Form>	
 	)
 }
 
