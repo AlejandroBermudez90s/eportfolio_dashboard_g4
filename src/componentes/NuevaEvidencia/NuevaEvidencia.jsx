@@ -23,9 +23,12 @@ const NuevaEvidencia = () => {
     }
 
     function manejarSelector(idTarea) {
-        
         const tareaElegida = listaTareas.find(tarea => tarea.id === idTarea)
-        return setTareaSeleccionada(tareaElegida)
+        setTareaSeleccionada(tareaElegida)
+    }
+
+    function manejarEvidencia(evidencia) {
+        console.log("Evidencia recibida:", evidencia);
     }
 
     return (
@@ -37,7 +40,7 @@ const NuevaEvidencia = () => {
                              manejarSelector={manejarSelector}   
             >
             </SelectorTareaRA>
-            <NuevaEvidenciaForm tareaSeleccionada={tareaSeleccionada}></NuevaEvidenciaForm>
+            <NuevaEvidenciaForm tareaSeleccionada={tareaSeleccionada} manejarEvidencia={manejarEvidencia}></NuevaEvidenciaForm>
         </div>
     )
 }

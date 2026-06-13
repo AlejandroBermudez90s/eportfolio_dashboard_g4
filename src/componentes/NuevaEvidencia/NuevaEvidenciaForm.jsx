@@ -20,7 +20,9 @@ const NuevaEvidenciaForm = (props) => {
 																										})
 	
 	function añadirEvidencia(evidencia) {
-		setEvidenciaInicial({ ...evidenciaInicial, ...evidencia })
+		const evidenciaFinal = { ...evidenciaInicial, ...evidencia }
+		setEvidenciaInicial(evidenciaFinal)
+		props.manejarEvidencia(evidenciaFinal)
 	}
 
 	console.log("Evidencia final:", evidenciaInicial);
