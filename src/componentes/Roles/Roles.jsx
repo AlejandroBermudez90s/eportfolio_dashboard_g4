@@ -76,7 +76,7 @@ const MenuLateral = () => {
                 {matriculados.map((modulo) => (
                   <Typography
                     key={modulo.id}
-                    onClick={() => navigate(`/funcionalidadestuiante/${modulo.id}`)}
+                    onClick={() => navigate(`/funcionalidadestudiante/${modulo.id}`)}
                     sx={{ cursor: "pointer", color: "primary.main", py: 0.5 }}
                   >
                     {modulo.nombre}
