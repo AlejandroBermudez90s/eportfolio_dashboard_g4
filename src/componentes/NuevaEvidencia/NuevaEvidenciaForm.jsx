@@ -12,12 +12,12 @@ const NuevaEvidenciaForm = (props) => {
 	const usuario = useContext(UserContext)
 
 	const [evidenciaInicial, setEvidenciaInicial] = useState({ 
-																											tarea_id 					: props.tareaSeleccionada.id,
- 																											estudiante_id 		: usuario,
-																											url								: "",
-																											descripcion				: "",
- 																											estado_validacion	: "pendiente" 
-																										})
+																											      tarea_id 					: props.tareaSeleccionada.id,
+ 																											      estudiante_id 		: usuario,
+																											      url								: "",
+																											      descripcion				: "",
+ 																											      estado_validacion	: "pendiente" 
+																										      })
 	
 	function añadirEvidencia(evidencia) {
 		const evidenciaFinal = { ...evidenciaInicial, ...evidencia }
