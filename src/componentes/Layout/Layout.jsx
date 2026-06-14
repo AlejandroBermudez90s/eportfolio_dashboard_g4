@@ -3,7 +3,7 @@ import Dashboard from "../Dashboard/Dashboard"
 import { Routes, Route } from 'react-router-dom'
 import FuncionalidadEstudiante from "../FuncionalidadEstudiante/FuncionalidadEstudiante"
 import FuncionalidadDocente from "../FuncionalidadDocente/FuncionalidadDocente"
-import FamiliasProfesionales from "../FamiliasProfesionales/PaginaFamiliasProfesionales";
+import FamiliasProfesionales from "../FamiliasProfesionales/FamiliasProfesionales";
 
 const Layout = (props) => {
 
