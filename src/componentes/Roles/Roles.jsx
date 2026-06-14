@@ -1,8 +1,10 @@
-
+// PARTE 1
 import TokenContext from "../Contexts/TokenContext";
-import UserContext from "../Contexts/UserContext";
 
+import UserContext from "../Contexts/UserContext";
 import { useContext } from "react";
+
+// ACORDEÓN
 import { useNavigate } from "react-router-dom";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -10,15 +12,21 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import useRoles from "../../CustomHooks/Roles/useRoles.js";
+// CUSTOM HOOKS Y SERVICIOS
+//import useRoles from "../../CustomHooks/Roles/useRoles.js";
+import useRolesAPI from "../../CustomHooks/Roles/useRolesAPI.js";
 import useMisModulosImpartidos from "../../CustomHooks/MisModulosImpartidos/useMisModulosImpartidos.js";
 import useMisModulosMatriculados from "../../CustomHooks/MisModulosMatriculados/useMisModulosMatriculados.js";
 import opcionesMenu from "../../mocks/mock-administrador.js";
 
+
 const MenuLateral = () => {
-  const { lista: roles } = useRoles();
-  const { lista: impartidos } = useMisModulosImpartidos();
-  const { lista: matriculados } = useMisModulosMatriculados();
+
+  const user = useContext(UserContext);
+
+  const { lista: roles } = useRolesAPI(user);
+  const { lista: impartidos } = useMisModulosImpartidos(user);
+  const { lista: matriculados } = useMisModulosMatriculados(user);
   const navigate = useNavigate();
 
   return (
