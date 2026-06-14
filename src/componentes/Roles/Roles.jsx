@@ -29,74 +29,48 @@ const MenuLateral = () => {
   const { lista: matriculados } = useMisModulosMatriculados(user);
   const navigate = useNavigate();
 
+  const obtenerRoles = (rol) => {
+    if (rol === "administrador") {
+      return opcionesMenu.administrador.map((opcion) => ({
+        label: opcion.nombre,
+        onClick: () => navigate(opcion.ruta),
+      }));
+    }
+    if (rol === "docente") {
+      return impartidos.map((modulo) => ({
+        label: modulo.nombre,
+        onClick: () => navigate(`/funcionalidaddocente/${modulo.id}`),
+      }));
+    }
+    if (rol === "estudiante") {
+      return matriculados.map((modulo) => ({
+        label: modulo.nombre,
+        onClick: () => navigate(`/funcionalidadestudiante/${modulo.id}`),
+      }));
+    }
+    return [];
+  };
+
   return (
     <>
-      {roles.map((rol) => {
-        if (rol === "administrador") {
-          return (
-            <Accordion key={rol}>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>{rol}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                {opcionesMenu.administrador.map((opcion) => (
-                  <Typography
-                    key={opcion.ruta}
-                    onClick={() => navigate(opcion.ruta)}
-                    sx={{ cursor: "pointer", color: "primary.main", py: 0.5 }}
-                  >
-                    {opcion.nombre}
-                  </Typography>
-                ))}
-              </AccordionDetails>
-            </Accordion>
-          );
-        }
-
-        if (rol === "docente") {
-          return (
-            <Accordion key={rol}>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>{rol}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                {impartidos.map((modulo) => (
-                  <Typography
-                    key={modulo.id}
-                    onClick={() => navigate(`/funcionalidaddocente/${modulo.id}`)}
-                    sx={{ cursor: "pointer", color: "primary.main", py: 0.5 }}
-                  >
-                    {modulo.nombre}
-                  </Typography>
-                ))}
-              </AccordionDetails>
-            </Accordion>
-          );
-        }
-
-        if (rol === "estudiante") {
-          return (
-            <Accordion key={rol}>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>{rol}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                {matriculados.map((modulo) => (
-                  <Typography
-                    key={modulo.id}
-                    onClick={() => navigate(`/funcionalidadestudiante/${modulo.id}`)}
-                    sx={{ cursor: "pointer", color: "primary.main", py: 0.5 }}
-                  >
-                    {modulo.nombre}
-                  </Typography>
-                ))}
-              </AccordionDetails>
-            </Accordion>
-          );
-        }
-
-        return null;
-      })}
+      {roles.map((rol) => (
+        <Accordion key={rol}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography>{rol}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            {obtenerRoles(rol).map((item, index) => (
+              <Typography
+                key={index}
+                onClick={item.onClick}
+                sx={{ cursor: "pointer", color: "primary.main", py: 0.5 }}
+              >
+                {item.label}
+              </Typography>
+            ))}
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </>
   );
 };

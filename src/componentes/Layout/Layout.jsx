@@ -8,16 +8,16 @@ const Layout = (props) => {
 
     return (
         <div className='row'>
-            <div className='col-4'>
+            <aside className='col-4'>
                 <Roles></Roles>
-            </div>
-            <div className='col-8'>
+            </aside>
+            <main className='col-8'>
                 <Routes>
                     <Route path="/" element={<Dashboard menu={props.menu} />} />
                     <Route path="/funcionalidaddocente/:modulo" element={<FuncionalidadDocente />} />
                     <Route path="/funcionalidadestudiante/:modulo" element={<FuncionalidadEstudiante />} />
                 </Routes>
-            </div>
+            </main>
         </div>
     )
 }
